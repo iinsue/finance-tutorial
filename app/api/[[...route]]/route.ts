@@ -6,11 +6,20 @@ export const runtime = "edge";
 const app = new Hono().basePath("/api");
 
 // c 는 context 라는 의미
-app.get("/hello", (c) => {
-  return c.json({
-    message: "Hello Next.js!",
+app
+  .get("/hello", (c) => {
+    return c.json({
+      message: "Hello Next.js!",
+    });
+  })
+  .get("/hello/:test", (c) => {
+    const test = c.req.param("test");
+
+    return c.json({
+      message: "Hello World",
+      test: test,
+    });
   });
-});
 
 // file based routing
 export const GET = handle(app);
