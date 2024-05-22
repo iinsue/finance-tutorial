@@ -32,7 +32,7 @@ app
     }
   )
   .post(
-    "/",
+    "/create/:postId",
     zValidator(
       "json",
       z.object({
@@ -40,8 +40,15 @@ app
         userId: z.string(),
       })
     ),
+    zValidator(
+      "param",
+      z.object({
+        postId: z.number(),
+      })
+    ),
     (c) => {
       const { name, userId } = c.req.valid("json");
+      const { postId } = c.req.valid("param");
 
       return c.json({});
     }
