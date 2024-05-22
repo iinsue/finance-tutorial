@@ -30,6 +30,21 @@ app
         test: test,
       });
     }
+  )
+  .post(
+    "/",
+    zValidator(
+      "json",
+      z.object({
+        name: z.string(),
+        userId: z.string(),
+      })
+    ),
+    (c) => {
+      const { name, userId } = c.req.valid("json");
+
+      return c.json({});
+    }
   );
 
 // file based routing
