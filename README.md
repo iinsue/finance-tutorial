@@ -1,4 +1,4 @@
 ### Finance Tutorial
 - Drizzle
 - Hono
-- Finance
+- Chart
